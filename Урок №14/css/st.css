@@ -1,0 +1,13 @@
+.block{
+	width: 500px;
+	height: 500px;
+	background-color: #000;
+}
+.box{
+	width: 100px;
+	height: 100px;
+	background-color: #f00;
+}
+h1{
+	color: red;
+}
