@@ -5,106 +5,135 @@ window.addEventListener('DOMContentLoaded', () => {
 let btn = document.getElementById('popup-btn'),
 				overlay = document.querySelector('.overlay'),
 				main = document.querySelector('.main'),
+				mainCards = document.querySelector('.main-cards'),
 				custom = document.querySelector('.custom'),
 				custom_info = document.querySelector('.custom-info');
 				custom_char = document.querySelector('.custom-char');
 				custom_style = document.querySelector('.custom-style');
 
 
-btn.addEventListener('click', function(event){
+btn.addEventListener('click', function Customizer(event){
 
 	if (event.target){
 		overlay.style.display = 'none';
-	 main.style.display = 'block';
-		// custom.style.display = 'flex';
-		// custom_info.style.display = 'block';
-		// custom_char.style.display = 'block';
-		// custom_style.style.display = 'block';
+	 main.style.display = 'none';
+		custom.style.display = 'flex';
+		custom_info.style.display = 'block';
+		custom_char.style.display = 'block';
+		custom_style.style.display = 'block';
 	};
 
-	let mainCard = document.createElement("div"),
-					candidateBlock = document.createElement('div'),
-					photo = document.createElement('div'),
-					result = document.createElement('div'),
-					result_count = document.createElement('div'),
-					progress = document.createElement('div'),
-					progress_bar = document.createElement('div'),
-					name = document.createElement('div'),
-					age = document.createElement('div'),
-					sex = document.createElement('div'),
-					views = document.createElement('div'),
-					bio = document.createElement('div');
 
-					mainCard.className = 'main-cards-item';
-					candidateBlock.className = 'candidate-block';
-					photo.className = 'photo';
-					result.className = 'result';
-					result_count.className = 'result-count';
-					progress.className = 'progress';
-					progress_bar.className = 'progress-bar';
-					name.className = 'name';
-					age.className = 'age';
-					sex.className = 'sex';
-					views.className = 'views';
-					bio.className = 'bio';
-
-					mainCard.appendChild(candidateBlock);
-					mainCard.appendChild(photo);
-					mainCard.appendChild(result);
-					mainCard.appendChild(name);
-					mainCard.appendChild(age);
-					mainCard.appendChild(sex);
-					mainCard.appendChild(views);
-					mainCard.appendChild(bio);
-
-					result.appendChild(result_count);
-					result.appendChild(progress);
-
-					progress.appendChild(progress_bar);
-     
 
 		
 });
 
-//Customizer 
+//Создание кандидата 
 
-	let field = document.getElementsByTagName('input'),
-					policy = document.getElementsByTagName('option'),
+	let customName = document.getElementById('name'),
+					customAge = document.getElementById('age'),
+					fimale = document.getElementById('male'),
+					male = document.getElementById('fimale'),
+					policy = document.getElementById('select'),
 					biography = document.getElementById('bio'),
-					name = document.getElementsByClassName('name'),
-					age = document.getElementsByClassName('age'),
-					sex = document.getElementsByClassName('sex'),
-					views = document.getElementsByClassName('views');
+					Views = document.getElementsByClassName('views')[0],
+					preview = document.getElementsByClassName('preview')[0],
+					custom_btn = document.getElementById('ready');
 
-	field[0].addEventListener('change', ()=>{
-			field[0].innerHTML = name;
-	});
+	custom_btn.addEventListener('click', (event)=>{
 
-	field[1].addEventListener('change', ()=>{
-			field[1].innerHTML = age;
-	});
+		let mainCardItem = document.createElement("div"),
+						candidateBlock = document.createElement('div'),
+						newphoto = document.createElement('div'),
+						result = document.createElement('div'),
+						result_count = document.createElement('div'),
+						progress = document.createElement('div'),
+						progress_bar = document.createElement('div'),
+						name = document.createElement('div'),
+						age = document.createElement('div'),
+						sex = document.createElement('div'),
+						views = document.createElement('div'),
+						biogr = document.createElement('div');
 
-	field[2].addEventListener('change', ()=>{
-			field[2].innerHTML = sex;
-	});
-	
-	for (let i = 0; i<=2; i++){
+						mainCardItem.className = 'main-cards-item';
+						candidateBlock.className = 'candidate-block';
+						newphoto.className = 'photo';
+						result.className = 'result';
+						result_count.className = 'result-count';
+						progress.className = 'progress';
+						progress_bar.className = 'progress-bar';
+						name.className = 'name';
+						age.className = 'age';
+						sex.className = 'sex';
+						views.className = 'views';
+						biogr.className = 'bio';
 
-		policy[i].addEventListener('change', ()=>{
-				policy[i].innerHTML = views; 
+								newphoto.textContent = preview;
+								name.innerHTML = customName;
+								age.innerHTML = customAge;
+								if (fimale == true){
+									sex.innerHTML = fimale.value;
+								} else if(male == true){
+									sex.innerHTML = male.value;
+								};
 
-		})
-	};
+									//views.innerHTML = this.options[this.selectedIndex].value;
 
-	biography.addEventListener('change', (event)=>{
-			biography.innerHTML = document.getElementsByClassName('bio');
+						biography.innerHTML = biogr;
 
+						mainCards.appendChild(mainCardItem);
+						mainCardItem.appendChild(candidateBlock);
+						candidateBlock.appendChild(newphoto);
+						candidateBlock.appendChild(result);
+						mainCardItem.appendChild(name);
+						mainCardItem.appendChild(age);
+						mainCardItem.appendChild(sex);
+						mainCardItem.appendChild(views);
+						mainCardItem.appendChild(biogr);
+
+						result.appendChild(result_count);
+						result.appendChild(progress);
+
+						progress.appendChild(progress_bar);
+		    
+
+		
+			custom.style.display = 'none';
+			main.style.display = 'block';
+
+			//Обнуление
+
+			let progress_bar_1 = document.getElementsByClassName('progress-bar-1')[0],
+							progress_bar_2 = document.getElementsByClassName('progress-bar-2')[0],
+							progress_bar_3 = document.getElementsByClassName('progress-bar-3')[0],
+							resultCount = document.getElementsByClassName('result-count');
+
+			result_count.innerHTML = '0%';			
+			resultCount[0].innerHTML = "0%";
+			resultCount[1].innerHTML = "0%";
+							
 			if (event.target){
-			 main.style.display = 'block';
-				custom.style.display = 'none';
-			};
 
-	});
+				progress_bar_1.style.height = '0%';
+				progress_bar_2.style.height = '0%';
+				progress_bar_3.style.height = '0%';
 
+   };
+
+   //Сброс результатов
+
+			let reset = document.getElementById('reset');
+
+			reset.addEventListener('click', ()=>{
+				mainCardItem.remove();
+				 main.style.display = 'none';
+					custom.style.display = 'flex';
+					custom_info.style.display = 'block';
+					custom_char.style.display = 'block';
+					custom_style.style.display = 'block';
+			})
+
+
+	})
 
 });				

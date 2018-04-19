@@ -161,6 +161,8 @@
   background: url("../img/candidate-2.png") center no-repeat;
 }
 
+
+
 .main-cards-item .candidate-block .result {
   display: flex;
   flex-direction: column;
@@ -190,12 +192,18 @@
 }
 
 .main-cards-item .candidate-block .result .progress-bar-1 {
-  height: 35%;
+  height: 20%;
 }
 
 .main-cards-item .candidate-block .result .progress-bar-2 {
-  height: 65%;
+  height: 50%;
 }
+
+.main-cards-item .candidate-block .result .progress-bar-3 {
+  height: 30%;
+}
+
+
 
 .main-cards-item .name {
   font-size: 16px;
