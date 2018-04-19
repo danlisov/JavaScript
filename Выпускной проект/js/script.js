@@ -62,6 +62,7 @@ btn.addEventListener('click', function Customizer(event){
 						result_count.className = 'result-count';
 						progress.className = 'progress';
 						progress_bar.className = 'progress-bar';
+						progress_bar.classList.add('progress-bar-3');
 						name.className = 'name';
 						age.className = 'age';
 						sex.className = 'sex';
@@ -134,7 +135,27 @@ btn.addEventListener('click', function Customizer(event){
 				};
 			})
 
+			//Честное голосование
 
-	})
+			let vot = document.getElementById('voting');
+
+			vot.addEventListener('click', ()=>{
+					result_count.innerHTML = '45%';
+					resultCount[0].innerHTML = "20%";
+					resultCount[1].innerHTML = "35%";
+
+					if (event.target){
+
+						progress_bar_1.style.height = '20%';
+						progress_bar_2.style.height = '35%';
+						progress_bar_3.style.height = '45%';
+
+   		};
+			});
+
+
+	});
+
+
 
 });				
