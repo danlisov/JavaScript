@@ -116,7 +116,6 @@ btn.addEventListener('click', function Customizer(event){
 
 				progress_bar_1.style.height = '0%';
 				progress_bar_2.style.height = '0%';
-				progress_bar_3.style.height = '0%';
 
    };
 
@@ -125,12 +124,14 @@ btn.addEventListener('click', function Customizer(event){
 			let reset = document.getElementById('reset');
 
 			reset.addEventListener('click', ()=>{
+				if (event.target){
 				mainCardItem.remove();
 				 main.style.display = 'none';
 					custom.style.display = 'flex';
 					custom_info.style.display = 'block';
 					custom_char.style.display = 'block';
 					custom_style.style.display = 'block';
+				};
 			})
 
 
