@@ -80,7 +80,7 @@ btn.addEventListener('click', function Customizer(event){
 
 									//views.innerHTML = this.options[this.selectedIndex].value;
 
-						biography.innerHTML = biogr;
+						biogr.innerHTML = biography;
 
 						mainCards.appendChild(mainCardItem);
 						mainCardItem.appendChild(candidateBlock);
@@ -117,6 +117,7 @@ btn.addEventListener('click', function Customizer(event){
 
 				progress_bar_1.style.height = '0%';
 				progress_bar_2.style.height = '0%';
+				progress_bar_3.style.height = '0%';
 
    };
 
@@ -151,11 +152,30 @@ btn.addEventListener('click', function Customizer(event){
 						progress_bar_3.style.height = '45%';
 
    		};
+
+   		//Вмешаться в голосование
+
+			let crime = document.getElementById('crime');
+
+			crime.addEventListener('click', ()=>{
+				if (vot.click){
+				
+					result_count.innerHTML = '70%';
+					resultCount[0].innerHTML = "10%";
+					resultCount[1].innerHTML = "20%";
+
+					if (event.target){
+
+						progress_bar_1.style.height = '10%';
+						progress_bar_2.style.height = '20%';
+						progress_bar_3.style.height = '70%';
+				};
+			};
 			});
 
+			
+			});
 
 	});
-
-
 
 });				
