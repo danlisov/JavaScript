@@ -23,28 +23,28 @@ btn.addEventListener('click', function Customizer(event){
 		custom_style.style.display = 'block';
 	};
 
-
-
 		
 });
+
+
+
 
 //Создание кандидата 
 
 	let customName = document.getElementById('name'),
 					customAge = document.getElementById('age'),
-					fimale = document.getElementById('male'),
-					male = document.getElementById('fimale'),
 					policy = document.getElementById('select'),
 					biography = document.getElementById('bio'),
-					Views = document.getElementsByClassName('views')[0],
-					preview = document.getElementsByClassName('preview')[0],
+					Views = document.querySelector('.views'),
+					person = document.querySelector('.person'),
+					person_easy = document.querySelector('.person-easy'),
 					custom_btn = document.getElementById('ready');
 
 	custom_btn.addEventListener('click', (event)=>{
 
 		let mainCardItem = document.createElement("div"),
 						candidateBlock = document.createElement('div'),
-						newphoto = document.createElement('div'),
+						photo = document.createElement('div'),
 						result = document.createElement('div'),
 						result_count = document.createElement('div'),
 						progress = document.createElement('div'),
@@ -57,7 +57,7 @@ btn.addEventListener('click', function Customizer(event){
 
 						mainCardItem.className = 'main-cards-item';
 						candidateBlock.className = 'candidate-block';
-						newphoto.className = 'photo';
+						photo.className = 'photo photo-3';
 						result.className = 'result';
 						result_count.className = 'result-count';
 						progress.className = 'progress';
@@ -69,22 +69,10 @@ btn.addEventListener('click', function Customizer(event){
 						views.className = 'views';
 						biogr.className = 'bio';
 
-								newphoto.textContent = preview;
-								name.innerHTML = customName;
-								age.innerHTML = customAge;
-								if (fimale == true){
-									sex.innerHTML = fimale.value;
-								} else if(male == true){
-									sex.innerHTML = male.value;
-								};
-
-									//views.innerHTML = this.options[this.selectedIndex].value;
-
-						biogr.innerHTML = biography;
-
+						
 						mainCards.appendChild(mainCardItem);
 						mainCardItem.appendChild(candidateBlock);
-						candidateBlock.appendChild(newphoto);
+						candidateBlock.appendChild(photo);
 						candidateBlock.appendChild(result);
 						mainCardItem.appendChild(name);
 						mainCardItem.appendChild(age);
@@ -96,8 +84,46 @@ btn.addEventListener('click', function Customizer(event){
 						result.appendChild(progress);
 
 						progress.appendChild(progress_bar);
-		    
 
+						name.innerHTML = customName.value;
+						age.innerHTML = customAge.value + " лет";
+						biogr.innerHTML = biography.value;
+
+						let view = document.getElementsByTagName('option');
+
+						if (view[0]){
+							views.innerHTML = "Либеральные";
+						} else if(view[1]){
+									views.innerHTML = "Левые";
+						} else {
+									views.innerHTML = "Правые";
+						};
+
+						if (male.checked){
+							sex.innerHTML = male.value;
+							photo.style.backgroundImage = arrMen[slideIndex - 1];;
+							photo.style.backgroundRepeat = 'no-repeat';
+							photo.style.backgroundPosition = 'center';
+							photo.style.backgroundSize = '85%';
+						} else if (female.checked){
+							sex.innerHTML = female.value;
+							photo.style.backgroundImage = arrWomen[slideIndex - 1];;
+							photo.style.backgroundRepeat = 'no-repeat';
+							photo.style.backgroundPosition = 'center';
+							photo.style.backgroundSize = '85%';
+						};	
+
+
+						let gender = document.createElement('div'),
+										polit = document.createElement('div'),
+										biog = document.createElement('div');
+								  gender.innerHTML = "Пол:" + "<br>";
+								  polit.innerHTML = "Полит. взгляды:" + "<br>";
+								  biog.innerHTML = "Биография:";
+
+						mainCardItem.insertBefore(gender, sex);
+						mainCardItem.insertBefore(polit, views);
+						mainCardItem.insertBefore(biog, biogr);
 		
 			custom.style.display = 'none';
 			main.style.display = 'block';
@@ -178,4 +204,75 @@ btn.addEventListener('click', function Customizer(event){
 
 	});
 
-});				
+//Slider
+
+let preview = document.querySelector('.preview'),
+		previewMain = document.querySelector('.person-easy'),
+		female = document.getElementById('female'),
+		male = document.getElementById('male'),
+		prev = document.querySelector('.prev'),
+		next = document.querySelector('.next'),
+		arrWomen = ["url('./img/construct-1.png')", 
+						"url('./img/construct-2.png')",
+						"url('./img/construct-3.png')",
+						"url('./img/construct-4.png')"],
+		arrMen = ["url('./img/construct-5.png')",
+					"url('./img/construct-6.png')",
+					"url('./img/construct-7.png')",
+					"url('./img/construct-8.png')"],
+		slideIndex = 1;
+
+		female.addEventListener('click', ()=>{
+			preview.style.backgroundImage = arrWomen[0];
+			previewMain.style.backgroundImage = arrWomen[0];
+				function showBackgroundSlides(n) {
+			      if (n > arrWomen.length) {
+			        slideIndex = 1;
+			      }
+			      if (n < 1) {
+			        slideIndex = arrWomen.length;
+			      }
+			      preview.style.backgroundImage = arrWomen[slideIndex - 1],
+			      previewMain.style.backgroundImage = arrWomen[slideIndex - 1];
+			      return arrWomen[slideIndex - 1];
+
+			    }
+			    function plusSlides (n) {
+			      showBackgroundSlides(slideIndex += n)
+			    }
+			    prev.addEventListener('click', function() {
+			      plusSlides(-1);
+			    });
+			    next.addEventListener('click', function() {
+			      plusSlides(1);
+			    });
+		});
+
+		
+male.addEventListener('click', ()=>{
+	preview.style.backgroundImage = arrMen[0];
+	previewMain.style.backgroundImage = arrMen[0];
+			function showBackgroundSlides(n) {
+		      if (n > arrMen.length) {
+		        slideIndex = 1;
+		      }
+		      if (n < 1) {
+		        slideIndex = arrMen.length;
+		      }
+		      preview.style.backgroundImage = arrMen[slideIndex - 1],
+		      previewMain.style.backgroundImage = arrMen[slideIndex - 1];
+		      return arrMen[slideIndex - 1];
+
+		    }
+		    function plusSlides (n) {
+		      showBackgroundSlides(slideIndex += n)
+		    }
+		    prev.addEventListener('click', function() {
+		      plusSlides(-1);
+		    });
+		    next.addEventListener('click', function() {
+		      plusSlides(1);
+		    });
+});
+
+});							
