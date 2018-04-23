@@ -35,7 +35,6 @@ btn.addEventListener('click', function Customizer(event){
 					customAge = document.getElementById('age'),
 					policy = document.getElementById('select'),
 					biography = document.getElementById('bio'),
-					Views = document.querySelector('.views'),
 					person = document.querySelector('.person'),
 					person_easy = document.querySelector('.person-easy'),
 					custom_btn = document.getElementById('ready');
@@ -91,13 +90,7 @@ btn.addEventListener('click', function Customizer(event){
 
 						let view = document.getElementsByTagName('option');
 
-						if (view[0]){
-							views.innerHTML = "Либеральные";
-						} else if(view[1]){
-									views.innerHTML = "Левые";
-						} else {
-									views.innerHTML = "Правые";
-						};
+						
 
 						if (male.checked){
 							sex.innerHTML = male.value;
@@ -110,8 +103,16 @@ btn.addEventListener('click', function Customizer(event){
 							photo.style.backgroundImage = arrWomen[slideIndex - 1];;
 							photo.style.backgroundRepeat = 'no-repeat';
 							photo.style.backgroundPosition = 'center';
-							photo.style.backgroundSize = '85%';
+							photo.style.backgroundSize = '75%';
 						};	
+
+						if (view[0].selected){
+							views.innerHTML = "Либеральные"
+						} else if(view[1].selected){
+									views.innerHTML = "Левые"
+						} else{
+									views.innerHTML = "Правые"
+						};
 
 
 						let gender = document.createElement('div'),
