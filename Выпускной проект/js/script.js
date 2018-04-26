@@ -217,7 +217,7 @@ customAge.addEventListener('input', () => {
 			} else {
 				customAge.style.border = '1px solid #e74c3c';
 				bio.style.cssText = 'pointer-events: none; opacity: 0.5;';
-				//custom_btn.style.cssText = 'pointer-events: none; opacity: 0.5;';				
+				custom_btn.style.cssText = 'pointer-events: none; opacity: 0.5;';				
 			}
 		});
 
