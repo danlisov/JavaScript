@@ -7,8 +7,9 @@ let btn = document.getElementById('popup-btn'),
 				main = document.querySelector('.main'),
 				mainCards = document.querySelector('.main-cards'),
 				custom = document.querySelector('.custom'),
-				custom_info = document.querySelector('.custom-info');
-				custom_char = document.querySelector('.custom-char');
+				custom_info = document.querySelector('.custom-info'),
+				custom_char = document.querySelector('.custom-char'),
+				bio = document.querySelector('.bio'),
 				custom_style = document.querySelector('.custom-style');
 
 
@@ -85,8 +86,9 @@ btn.addEventListener('click', function Customizer(event){
 						progress.appendChild(progress_bar);
 
 						name.innerHTML = customName.value;
-						age.innerHTML = customAge.value + " лет";
 						biogr.innerHTML = biography.value;
+						age.innerHTML = customAge.value + " лет";
+						
 
 						let view = document.getElementsByTagName('option');
 
@@ -113,6 +115,8 @@ btn.addEventListener('click', function Customizer(event){
 						} else{
 									views.innerHTML = "Правые"
 						};
+
+
 
 
 						let gender = document.createElement('div'),
@@ -204,6 +208,19 @@ btn.addEventListener('click', function Customizer(event){
 			});
 
 	});
+
+
+customAge.addEventListener('input', () => {
+			if (!isNaN(customAge.value) && customAge.value != '' && customAge.value != null && customAge.value > 34 && customAge.value < 66) {
+				customAge.style.border = '1px solid #1f8ce2';		
+				bio.style.cssText = 'pointer-events:; opacity:;';
+			} else {
+				customAge.style.border = '1px solid #e74c3c';
+				bio.style.cssText = 'pointer-events: none; opacity: 0.5;';
+				//custom_btn.style.cssText = 'pointer-events: none; opacity: 0.5;';				
+			}
+		});
+
 
 //Slider
 
